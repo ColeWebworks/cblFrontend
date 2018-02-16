@@ -10,7 +10,7 @@
 <ion-content padding>
  <h1>Admin Panel</h1>
 
- <ion-list>
+<!--  <ion-list>
   <ion-list-header>
     Navigators
   </ion-list-header>
@@ -47,5 +47,47 @@
     </ion-avatar>
     <h2>Young Person 1</h2>
   </ion-item>
-</ion-list>
+</ion-list> -->
+
+<div padding>
+  <ion-segment [(ngModel)] = "roles">
+    <ion-segment-button value="navigators">
+      Navigators
+    </ion-segment-button>
+    <ion-segment-button value="participants">
+      Participants
+    </ion-segment-button>
+    <ion-segment-button value="facilitators">
+      Sector Facilitators
+    </ion-segment-button>
+  </ion-segment>
+</div>
+
+<div [ngSwitch]="roles">
+  <ion-list *ngSwitchCase="'navigators'">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="img/thumbnail-puppy-1.jpg">
+      </ion-thumbnail>
+      <h2>Navigator</h2>
+    </ion-item>
+  </ion-list>
+
+  <ion-list *ngSwitchCase="'participants'">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="img/thumbnail-kitten-1.jpg">
+      </ion-thumbnail>
+      <h2>Participant</h2>
+    </ion-item>
+  </ion-list>
+  <ion-list *ngSwitchCase="'facilitators'">
+    <ion-item>
+      <ion-thumbnail item-start>
+        <img src="img/thumbnail-kitten-1.jpg">
+      </ion-thumbnail>
+      <h2>Facilitator</h2>
+    </ion-item>
+  </ion-list>
+</div>
 
