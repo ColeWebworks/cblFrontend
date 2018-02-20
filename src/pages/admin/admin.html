@@ -50,7 +50,7 @@
 </ion-list> -->
 
 <div padding>
-  <ion-segment [(ngModel)] = "roles">
+  <ion-segment [(ngModel)] = "role">
     <ion-segment-button value="navigators">
       Navigators
     </ion-segment-button>
@@ -63,31 +63,125 @@
   </ion-segment>
 </div>
 
-<div [ngSwitch]="roles">
+<div [ngSwitch]="role">
   <ion-list *ngSwitchCase="'navigators'">
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="img/thumbnail-puppy-1.jpg">
-      </ion-thumbnail>
-      <h2>Navigator</h2>
-    </ion-item>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="https://picsum.photos/80/80?random">
+        </ion-thumbnail>
+        <h2>Navigator</h2>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="button1"></ion-icon>
+          Button1
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="button2"></ion-icon>
+          Button2
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+  
+    <ion-item-sliding>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="https://picsum.photos/80/80?random">
+        </ion-thumbnail>
+        <h2>Navigator 2</h2>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="button1"></ion-icon>
+          Button1
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="button2"></ion-icon>
+          Button2
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 
   <ion-list *ngSwitchCase="'participants'">
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="img/thumbnail-kitten-1.jpg">
-      </ion-thumbnail>
-      <h2>Participant</h2>
-    </ion-item>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="https://picsum.photos/80/80?random">
+        </ion-thumbnail>
+        <h2>Participant</h2>
+      </ion-item>
+      <ion-item-options side="left">
+          <button ion-button color="primary">
+            <ion-icon name="messages"></ion-icon>
+            Messages
+          </button>
+          <button ion-button color="secondary">
+            <ion-icon name="events-attended"></ion-icon>
+            Events Attended
+          </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item>
+          <ion-thumbnail item-start>
+            <img src="https://picsum.photos/80/80?random">
+          </ion-thumbnail>
+          <h2>Participant 2</h2>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="messages"></ion-icon>
+            Messages
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="events-attended"></ion-icon>
+            Events Attended
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
+
   <ion-list *ngSwitchCase="'facilitators'">
-    <ion-item>
-      <ion-thumbnail item-start>
-        <img src="img/thumbnail-kitten-1.jpg">
-      </ion-thumbnail>
-      <h2>Facilitator</h2>
-    </ion-item>
+    <ion-item-sliding>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="https://picsum.photos/80/80?random">
+        </ion-thumbnail>
+        <h2>Facilitator</h2>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="button1"></ion-icon>
+            Button1
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="button2"></ion-icon>
+            Button2
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
+
+    <ion-item-sliding>
+      <ion-item>
+        <ion-thumbnail item-start>
+          <img src="https://picsum.photos/80/80?random">
+        </ion-thumbnail>
+        <h2>Facilitator 2</h2>
+      </ion-item>
+      <ion-item-options side="left">
+        <button ion-button color="primary">
+          <ion-icon name="button1"></ion-icon>
+            Button1
+        </button>
+        <button ion-button color="secondary">
+          <ion-icon name="button2"></ion-icon>
+            Button2
+        </button>
+      </ion-item-options>
+    </ion-item-sliding>
   </ion-list>
 </div>
 
