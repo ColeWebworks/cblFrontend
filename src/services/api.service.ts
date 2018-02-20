@@ -2,5 +2,5 @@ import{
     Http,
     Headers,
     RequestOptions
-} from '@angular/http:';
+} from '@angular/http';
 

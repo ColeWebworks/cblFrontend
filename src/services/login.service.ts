@@ -7,7 +7,6 @@ import{
 
 @Injectable()
 export class AuthService {
-    static BASE_URL = 'http://api.gamechangerhub.co.uk/api/';
+    static BASE_URL = process.env.BASE_URL;
     constructor (private http: Http){}
-    
 }
