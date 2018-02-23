@@ -6,12 +6,13 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../app/environments/environment';
+import { NativeStorage } from '@ionic-native/native-storage';
 
 
 @Injectable()
 export class ApiService {
   http: HttpClient;
-  constructor (private httpClient: HttpClient){
+  constructor (private httpClient: HttpClient, protected nativeStorage:NativeStorage){
     this.http = httpClient;
   }
 
@@ -32,4 +33,18 @@ export class ApiService {
     return new ErrorObservable(
       'Something bad happened; please try again later.');
   };
+
+  protected setOrigin() {
+    return {
+      headers: new HttpHeaders({
+        'Origin':  'App'
+      })
+    };
+  }
+
+  protected getAuth() {
+    return this.nativeStorage.getItem('token').then(data => {
+      return data.value
+    });
+  }
 }

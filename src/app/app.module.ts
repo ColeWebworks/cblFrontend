@@ -10,11 +10,13 @@ import{
 import { HttpClientModule } from '@angular/common/http';
 
 import { AuthService } from '../services/login.service';
+import { ContentService } from '../services/content.service';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { AdminPage } from '../pages/admin/admin';
+import { LinksPage } from '../pages/links/links';
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -24,7 +26,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     LoginPage,
-    AdminPage
+    AdminPage,
+    LinksPage
   ],
   imports: [
     BrowserModule,
@@ -36,12 +39,14 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     MyApp,
     HomePage,
     LoginPage,
-    AdminPage
+    AdminPage,
+    LinksPage
   ],
   providers: [
     StatusBar,
     SplashScreen,
     AuthService,
+    ContentService,
     NativeStorage,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

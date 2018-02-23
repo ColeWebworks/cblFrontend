@@ -10,18 +10,20 @@ import { NativeStorage } from '@ionic-native/native-storage';
 import { ApiService } from './api.service';
 
 @Injectable()
-export class AuthService extends ApiService {
-    constructor (http: HttpClient, nativeStorage: NativeStorage){
-      super(http, nativeStorage);
-    }
+export class ContentService extends ApiService {
+  constructor (http: HttpClient, nativeStorage: NativeStorage){
+    super(http, nativeStorage);
+  }
 
-    public login(email:string, password:string): Observable<any> {
-      const baseUrl = environment.baseUrl+'login';
-      const postData = {email, password};
+  public getLinks() {
+    console.log(this.getAuth());
+    const baseUrl = environment.baseUrl+'content/resources';
+    console.log(baseUrl);
 
-      return this.http.post(baseUrl, postData, this.setOrigin())
+    return this.http.get(baseUrl, this.setOrigin())
       .pipe(
         catchError(this.handleError)
       );
-    }
+
+  }
 }
