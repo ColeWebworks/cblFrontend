@@ -25,5 +25,9 @@ export class LoginPage {
     });
     return false;
   }
+  
+  attemptPasswordChange(username: string, newPassword:string){
+    console.log(username + ':' + newPassword)
+  }
 
 }
