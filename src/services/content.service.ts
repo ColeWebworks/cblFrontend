@@ -15,15 +15,19 @@ export class ContentService extends ApiService {
     super(http, nativeStorage);
   }
 
-  public getLinks() {
-    console.log(this.getAuth());
+  public getLinks(callback) {
     const baseUrl = environment.baseUrl+'content/resources';
-    console.log(baseUrl);
 
-    return this.http.get(baseUrl, this.setOrigin())
-      .pipe(
-        catchError(this.handleError)
-      );
+    return this.setup(baseUrl).then(url => {
+      return this.http.get(url).subscribe(data => {callback(data)});
+    });
 
+  }
+
+  private setup(baseUrl) {
+    return this.getAuth().then(token => {
+      const tokenUrl = baseUrl + '?api_token='+token;
+      return tokenUrl;
+    });
   }
 }

@@ -5,14 +5,32 @@
   Ionic pages and navigation.
 -->
 <ion-header>
-
-  <ion-navbar>
-    <ion-title>Links</ion-title>
-  </ion-navbar>
-
-</ion-header>
+    <ion-navbar>
+      <button ion-button menuToggle>
+        <ion-icon name="menu"></ion-icon>
+      </button>
+      <ion-title>Links</ion-title>
+    </ion-navbar>
+  </ion-header>
 
 
 <ion-content padding>
-
+    <ion-list>
+        <ion-list-header>
+            Useful Links
+        </ion-list-header>
+        <ion-item *ngFor="let link of links">
+            <h2>{{link.title}}</h2>
+            <button ion-button round>Visit site</button>
+        </ion-item>
+      </ion-list>
+      <ion-list>
+        <ion-list-header>
+            Partners
+        </ion-list-header>
+        <ion-item *ngFor="let partner of partners">
+            <h2>{{partner.title}}</h2>
+            <button ion-button round>More information</button>
+        </ion-item>
+    </ion-list>
 </ion-content>

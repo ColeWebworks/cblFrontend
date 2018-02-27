@@ -44,7 +44,7 @@ export class ApiService {
 
   protected getAuth() {
     return this.nativeStorage.getItem('token').then(data => {
-      return data.value
+      return data.value;
     });
   }
 }

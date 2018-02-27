@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 import { ContentService } from '../../services/content.service';
 import { Link } from '../../models/link';
+import { LoadingController } from 'ionic-angular';
 
 /**
  * Generated class for the LinksPage page.
@@ -16,7 +17,9 @@ import { Link } from '../../models/link';
 })
 export class LinksPage {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams, public contentService:ContentService) {
+  links:String[];
+  partners:String[];
+  constructor(public navCtrl: NavController, public navParams: NavParams, public contentService:ContentService, public loadingCtrl: LoadingController) {
   }
 
   ionViewDidLoad() {
@@ -28,10 +31,14 @@ export class LinksPage {
   }
 
   getContent() {
-    this.contentService.getLinks().subscribe(data => {
-      data.useful_links.forEach(element => {
-        console.log(element.title);
-      });
+    let loading = this.loadingCtrl.create({
+      content: 'Please wait...'
+    });
+    loading.present();
+    this.contentService.getLinks( data => {
+      this.links = data.useful_links;
+      this.partners = data.partners;
+      loading.dismiss();
     });
   }
 
