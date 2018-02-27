@@ -28,7 +28,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     LoginPage,
     AdminPage,
-    LinksPage
+    LinksPage,
     AdminPage,
     ChangePassword
   ],
@@ -43,7 +43,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     HomePage,
     LoginPage,
     AdminPage,
-    LinksPage
+    LinksPage,
     AdminPage,
     ChangePassword
   ],
