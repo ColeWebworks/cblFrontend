@@ -24,10 +24,4 @@ export class ContentService extends ApiService {
 
   }
 
-  private setup(baseUrl) {
-    return this.getAuth().then(token => {
-      const tokenUrl = baseUrl + '?api_token='+token;
-      return tokenUrl;
-    });
-  }
 }

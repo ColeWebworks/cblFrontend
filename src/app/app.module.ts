@@ -1,6 +1,6 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
-import { IonicApp, IonicErrorHandler, IonicModule } from 'ionic-angular';
+import { IonicApp, IonicErrorHandler, IonicModule, Events } from 'ionic-angular';
 import { NativeStorage } from '@ionic-native/native-storage';
 
 import{
@@ -53,6 +53,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AuthService,
     ContentService,
     NativeStorage,
+    Events,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
