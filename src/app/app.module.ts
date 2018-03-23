@@ -17,7 +17,12 @@ import { HomePage } from '../pages/home/home';
 import { LoginPage } from '../pages/login/login';
 import { AdminPage } from '../pages/admin/admin';
 import { LinksPage } from '../pages/links/links';
-import {ChangePassword} from '../pages/admin/change-password';
+import { ChangePassword } from '../pages/admin/change-password';
+import { attendance } from '../pages/Events/attendance.html';
+import { createEvent } from '../pages/Events/createEvent.html';
+import { EventPage } from '../pages/Events/event.html';
+
+
 
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
@@ -30,7 +35,13 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AdminPage,
     LinksPage,
     AdminPage,
-    ChangePassword
+    ChangePassword,
+    attendance,
+    createEvent,
+    EventPage
+
+    
+
   ],
   imports: [
     BrowserModule,
@@ -45,7 +56,10 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AdminPage,
     LinksPage,
     AdminPage,
-    ChangePassword
+    ChangePassword,
+    Events,
+    attendance,
+    createEvent
   ],
   providers: [
     StatusBar,
