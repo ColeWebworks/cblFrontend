@@ -10,5 +10,11 @@ import { NativeStorage } from '@ionic-native/native-storage';
     templateUrl: 'create-event.html'
   })
   export class createEvent{
+    constructor(public viewCtrl: ViewController, public loadingCtrl: LoadingController) {
 
+    }
+
+    public dismiss() {
+      this.viewCtrl.dismiss();
+    }
   }
