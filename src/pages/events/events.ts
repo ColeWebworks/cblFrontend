@@ -9,7 +9,7 @@ import { Storage } from '@ionic/storage';
     selector: "attend-events",
     templateUrl: 'attend-events.html'
   })
-  export class AttendEvents{
+  export class EventsPage{
     constructor(public navCtrl: NavController, public storage: Storage, public loadingCtrl: LoadingController) {
 
     }
