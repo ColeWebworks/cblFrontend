@@ -18,9 +18,8 @@ import { LoginPage } from '../pages/login/login';
 import { AdminPage } from '../pages/admin/admin';
 import { LinksPage } from '../pages/links/links';
 import { ChangePassword } from '../pages/admin/change-password';
-import { attendance } from '../pages/Events/attendance.html';
-import { createEvent } from '../pages/Events/createEvent.html';
-import { EventPage } from '../pages/Events/event.html';
+import { CreateEvent } from '../pages/Events/create-Event';
+import { EventsPage } from '../pages/Events/events';
 
 
 
@@ -36,9 +35,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LinksPage,
     AdminPage,
     ChangePassword,
-    attendance,
-    createEvent,
-    EventPage
+    CreateEvent,
+    EventsPage
 
     
 
@@ -58,9 +56,8 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     LinksPage,
     AdminPage,
     ChangePassword,
-    Events,
-    attendance,
-    createEvent
+    EventsPage,
+    CreateEvent
   ],
   providers: [
     StatusBar,

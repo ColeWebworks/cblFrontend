@@ -8,7 +8,7 @@ import { IonicApp, IonicModule, IonicErrorHandler, ViewController, LoadingContro
     selector: "create-event",
     templateUrl: 'create-event.html'
   })
-  export class createEvent{
+  export class CreateEvent{
     constructor(public viewCtrl: ViewController, public loadingCtrl: LoadingController) {
 
     }
