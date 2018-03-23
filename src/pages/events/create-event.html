@@ -1,0 +1,39 @@
+<ion-header>
+    <ion-buttons start>
+      <button ion-button (click)="dismiss()">Close</button>
+    </ion-buttons>
+    <ion-title>Create an Event</ion-title>
+  </ion-header>
+
+  <ion-content padding>
+
+    <div padding>
+      <ion-list>
+    
+        <ion-item>
+          <ion-label floating>Event Name</ion-label>
+          <ion-input id="name" #name type="text"></ion-input>
+        </ion-item>
+    
+        <ion-item>
+          <ion-label floating>Event Location</ion-label>
+          <ion-input id="location" #location type="text"></ion-input>
+        </ion-item>
+
+        <ion-item>
+            <ion-label floating>Start Time</ion-label>
+            <ion-input id="start" #start type="datetime-local"></ion-input>
+          </ion-item>
+          
+          <ion-item>
+            <ion-label floating>End Time</ion-label>
+            <ion-input id="end" #end type="datetime-local"></ion-input>
+          </ion-item>
+
+          <button ion-button block color="dark" round type="submit">Create Event</button>
+    
+      </ion-list>
+    </div>
+    </ion-content>
+    
+    
