@@ -1,5 +1,5 @@
 <ion-header>
-  <ion-navbar>
+  <ion-navbar (hideBackButton)="true">
     <button ion-button menuToggle>
       <ion-icon name="menu"></ion-icon>
     </button>
@@ -10,20 +10,22 @@
 <ion-content padding>
  <h1>Game Changer Hub</h1>
 
- <ion-list>
+    <ion-list>
 
-  <ion-item>
-    <ion-label floating>Username</ion-label>
-    <ion-input type="text"></ion-input>
-  </ion-item>
+      <ion-item>
+        <ion-label floating>Username</ion-label>
+        <ion-input id="username" #username type="text" placeholder="{{ message }}"></ion-input>
+      </ion-item>
 
-  <ion-item>
-    <ion-label floating>Password</ion-label>
-    <ion-input type="password"></ion-input>
-  </ion-item>
 
-</ion-list>
+      <ion-item>
+        <ion-label floating>Password</ion-label>
+        <ion-input id="password" #password type="password"></ion-input>
+      </ion-item>
 
-<div padding>
-  <button block>Sign In</button>
-</div>
+    </ion-list>
+
+    <div padding>
+      <button ion-button block color="dark" round type="submit" (click)="attemptSignin(username.value, password.value)">Sign In</button>
+    </div>
+</ion-content>
