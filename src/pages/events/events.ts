@@ -6,8 +6,8 @@ import { IonicApp, IonicModule, IonicErrorHandler, ViewController, LoadingContro
 import { Storage } from '@ionic/storage';
 
 @Component({
-    selector: "attend-events",
-    templateUrl: 'attend-events.html'
+    selector: "events",
+    templateUrl: 'event.html'
   })
   export class EventsPage{
     constructor(public navCtrl: NavController, public storage: Storage, public loadingCtrl: LoadingController) {
