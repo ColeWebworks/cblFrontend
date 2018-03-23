@@ -18,7 +18,7 @@ import { LoginPage } from '../pages/login/login';
 import { AdminPage } from '../pages/admin/admin';
 import { LinksPage } from '../pages/links/links';
 import { ChangePassword } from '../pages/admin/change-password';
-import { CreateEvent } from '../pages/Events/create-Event';
+import { CreateEvent } from '../pages/Events/create-event';
 import { EventsPage } from '../pages/Events/events';
 
 
@@ -37,9 +37,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     ChangePassword,
     CreateEvent,
     EventsPage
-
-    
-
   ],
   imports: [
     BrowserModule,
