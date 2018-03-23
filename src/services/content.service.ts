@@ -6,13 +6,13 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../app/environments/environment';
-import { NativeStorage } from '@ionic-native/native-storage';
+import { Storage } from '@ionic/storage';
 import { ApiService } from './api.service';
 
 @Injectable()
 export class ContentService extends ApiService {
-  constructor (http: HttpClient, nativeStorage: NativeStorage){
-    super(http, nativeStorage);
+  constructor (http: HttpClient, protected storage: Storage){
+    super(http, storage);
   }
 
   public getLinks(callback) {

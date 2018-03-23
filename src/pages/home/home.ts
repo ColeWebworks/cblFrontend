@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
 import { NavController, LoadingController } from 'ionic-angular';
-import { NativeStorage } from '@ionic-native/native-storage';
 import { ReadyState } from '@angular/http';
 import { LoginPage } from '../login/login';
 import { AuthService } from '../../services/login.service';
 import { Events } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-home',
@@ -14,7 +14,7 @@ export class HomePage {
 
   userToken;
 
-  constructor(public navCtrl: NavController, public nativeStorage: NativeStorage, public loadingCtrl: LoadingController, public authService: AuthService, public events:Events) {
+  constructor(public navCtrl: NavController, public storage: Storage, public loadingCtrl: LoadingController, public authService: AuthService, public events:Events) {
 
   }
 

@@ -1,7 +1,7 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule, Events } from 'ionic-angular';
-import { NativeStorage } from '@ionic-native/native-storage';
+import { IonicStorageModule } from '@ionic/storage';
 
 import{
   Http,
@@ -36,6 +36,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
+    IonicStorageModule.forRoot()
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -52,7 +53,6 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     AuthService,
     ContentService,
-    NativeStorage,
     Events,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]

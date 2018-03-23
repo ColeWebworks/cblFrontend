@@ -6,13 +6,13 @@ import { Observable } from 'rxjs/Observable';
 import { ErrorObservable } from 'rxjs/observable/ErrorObservable';
 import { catchError, retry } from 'rxjs/operators';
 import { environment } from '../app/environments/environment';
-import { NativeStorage } from '@ionic-native/native-storage';
+import { Storage } from '@ionic/storage';
 
 
 @Injectable()
 export class ApiService {
   http: HttpClient;
-  constructor (private httpClient: HttpClient, protected nativeStorage:NativeStorage){
+  constructor (private httpClient: HttpClient, protected storage: Storage){
     this.http = httpClient;
   }
 
@@ -43,8 +43,8 @@ export class ApiService {
   }
 
   protected getAuth() {
-    return this.nativeStorage.getItem('token').then(data => {
-      return data.value;
+    return this.storage.get('token').then((val) => {
+      return val;
     });
   }
 

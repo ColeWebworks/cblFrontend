@@ -4,18 +4,18 @@ import 'rxjs/Rx';
 import { Observable } from 'rxjs/Observable';
 import { catchError } from 'rxjs/operators';
 import { environment } from '../app/environments/environment';
-import { NativeStorage } from '@ionic-native/native-storage';
 import { ApiService } from './api.service';
 import { Events } from 'ionic-angular';
 import { User } from '../models/User';
+import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class AuthService extends ApiService {
 
     private user:User;
 
-    constructor (http: HttpClient, nativeStorage: NativeStorage, private events: Events){
-      super(http, nativeStorage);
+    constructor (http: HttpClient, protected storage: Storage, private events: Events){
+      super(http, storage);
       console.log(this.events);
       this.events.subscribe('user:token', (user, time) => {
         this.getUid();
@@ -49,12 +49,12 @@ export class AuthService extends ApiService {
 
     public getUser() {
       console.log('getUser');
-      this.nativeStorage.getItem('token').then((data) => {
+      this.storage.get('token').then((val) => {
         console.log('Got token');
         this.user = new User();
-        if(data.value != null) {
+        if(val != null) {
           console.log('Token has value');
-          this.user.token = data.value;
+          this.user.token = val;
           console.log('user:token');
           this.events.publish('user:token', this.user, Date.now());
         }
@@ -64,12 +64,12 @@ export class AuthService extends ApiService {
         }
       });
     }
+
     private getUid() {
-      this.nativeStorage.getItem('user_id').then((d) => {
-        console.log(typeof d);
-        if(d.value != null) {
+      this.storage.get('user_id').then((val) => {
+        if(val != null) {
           console.log('Got UID');
-          this.user.id = d.value;
+          this.user.id = val;
           console.log('user:authenticated');
           this.events.publish('user:authenticated', this.user, Date.now());
         }

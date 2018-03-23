@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { NavController, Navbar } from 'ionic-angular';
 import { AuthService } from '../../services/login.service';
-import { NativeStorage } from '@ionic-native/native-storage';
 import { AlertController } from 'ionic-angular';
 import { LoadingController } from 'ionic-angular';
+import { Storage } from '@ionic/storage';
 
 @Component({
   selector: 'page-login',
@@ -11,7 +11,7 @@ import { LoadingController } from 'ionic-angular';
 })
 export class LoginPage {
 
-  constructor(public navCtrl: NavController, public authService: AuthService, private nativeStorage: NativeStorage, public alertCtrl: AlertController, public loadingCtrl: LoadingController ) {
+  constructor(public navCtrl: NavController, public authService: AuthService, protected storage: Storage, public alertCtrl: AlertController, public loadingCtrl: LoadingController ) {
 
   }
 
@@ -23,24 +23,22 @@ export class LoginPage {
     loading.present();
     this.authService.login(username, password).subscribe(userData => {
       if(typeof userData.token != 'undefined') {
-        this.nativeStorage.setItem('token', {value: userData.token})
-        .then(
-          () => {
-            console.log('Stored item!');
-            this.nativeStorage.setItem('user_id', {value: userData.uid}).then();
-            loading.dismiss();
-            this.nativeStorage.getItem('token').then((data) => {
-              this.authService.getUser();
-              let alert = this.alertCtrl.create({
-                title: 'Logged in!',
-                subTitle: 'Your token is: '+ data.value,
-                buttons: ['OK']
-              });
-              alert.present();
-            });
-          },
-          error => console.error('Error storing item', error)
-        );
+
+        this.storage.set('token', userData.token);
+
+        this.storage.set('user_id', userData.uid);
+
+        this.authService.getUser();
+
+        this.storage.get('token').then((val) => {
+          let alert = this.alertCtrl.create({
+            title: 'Logged in!',
+            subTitle: 'Your token is: '+ val,
+            buttons: ['OK']
+          });
+          loading.dismiss();
+          alert.present();
+        });
       }
     });
     return false;
