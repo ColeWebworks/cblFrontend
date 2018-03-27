@@ -11,6 +11,7 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AuthService } from '../services/login.service';
 import { ContentService } from '../services/content.service';
+import { EventService } from '../services/event.service';
 
 import { MyApp } from './app.component';
 import { HomePage } from '../pages/home/home';
@@ -61,7 +62,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     SplashScreen,
     AuthService,
     ContentService,
-    Events,
+    EventService,
     {provide: ErrorHandler, useClass: IonicErrorHandler}
   ]
 })
