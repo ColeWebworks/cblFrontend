@@ -33,13 +33,13 @@ import { CategoryFactory } from '../../factories/categoryFactory';
     public dismiss() {
       this.viewCtrl.dismiss();
     }
-    createEvent(name:string, location:string, start:string, end:string, details:string){
+    createEvent(name:string, location:string, start:string, end:string, details:string, category:string[]){
       let loading = this.loadingCtrl.create({
         content: 'Please wait...'
       });
       loading.present();
       let postData = {
-        name, location, start, end, details
+        name, location, start, end, details, category
       };
       this.eventService.postEvent(postData,data =>{
         console.log(data);

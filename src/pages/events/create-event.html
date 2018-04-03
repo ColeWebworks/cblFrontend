@@ -37,7 +37,15 @@
             <ion-input id="details" #details type="text"></ion-input>
           </ion-item>
 
-          <button ion-button block color="dark" round type="submit" (click)="createEvent( name.value , location.value , start.value , end.value , details.value )">Create Event</button>
+
+          <ion-item>
+            <ion-label>Category</ion-label>
+            <ion-select [(ngModel)]="categories" id="category" #category multiple="true">
+              <ion-option *ngFor="let cat of categories" value="{{ cat.id }}">{{ cat.name }}</ion-option>
+            </ion-select>
+          </ion-item>
+
+          <button ion-button block color="dark" round type="submit" (click)="createEvent( name.value , location.value , start.value , end.value , details.value, category.value )">Create Event</button>
     
       </ion-list>
     </div>
