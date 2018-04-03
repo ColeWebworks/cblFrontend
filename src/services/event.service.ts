@@ -33,4 +33,13 @@ export class EventService extends ApiService {
     });
   }
 
+  public getCategories(callback) {
+    const baseUrl = environment.baseUrl+'event/categories';
+    console.log(baseUrl);
+
+    return this.setup(baseUrl).then(url => {
+      return this.http.get(url).subscribe(data => {callback(data)});
+    });
+  }
+
 }
