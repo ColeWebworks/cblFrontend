@@ -7,6 +7,7 @@ export class EventFactory extends ModelFactory {
     let models = [];
     data.forEach(element => {
       let c = new Category();
+      c.id = element.id;
       c.name = element.name;
       c.events = [];
 
