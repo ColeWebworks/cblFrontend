@@ -22,14 +22,14 @@
           <ion-input id="location" #location type="text"></ion-input>
         </ion-item>
 
-        <ion-item>
+          <ion-item>
             <ion-label floating>Start Time</ion-label>
-            <ion-input id="start" #start type="datetime-local"></ion-input>
+             <ion-datetime displayFormat="DD/MM/YY HH:mm" pickerFormat="D : MMM : YYYY HH : mm" min="2018" max="2020" hourValues="09,10,11,12,13,14,15,16,17" minuteValues="00,15,30,45"  [(ngModel)]="Event" id="start" #start></ion-datetime>
           </ion-item>
           
           <ion-item>
             <ion-label floating>End Time</ion-label>
-            <ion-input id="end" #end type="datetime-local"></ion-input>
+            <ion-datetime displayFormat="DD/MM/YY HH:mm" pickerFormat="D : MMM : YYYY HH : mm" min="2018" max="2020" hourValues="09,10,11,12,13,14,15,16,17" minuteValues="00,15,30,45" [(ngModel)]="Event" id="start" #start></ion-datetime>
           </ion-item>
 
           <ion-item>
@@ -40,7 +40,7 @@
 
           <ion-item>
             <ion-label>Category</ion-label>
-            <ion-select [(ngModel)]="categories" id="category" #category multiple="true">
+            <ion-select [(ngModel)]="Category" id="category" #category multiple="true">
               <ion-option *ngFor="let cat of categories" value="{{ cat.id }}">{{ cat.name }}</ion-option>
             </ion-select>
           </ion-item>
