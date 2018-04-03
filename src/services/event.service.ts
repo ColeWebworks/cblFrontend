@@ -25,4 +25,12 @@ export class EventService extends ApiService {
 
   }
 
+  public postEvent(postData, callback) {
+    const baseUrl = environment.baseUrl+'event';
+    console.log(baseUrl);
+    return this.setup(baseUrl).then(url => {
+      return this.http.post(url, postData).subscribe(data => {callback(data)});
+    });
+  }
+
 }
