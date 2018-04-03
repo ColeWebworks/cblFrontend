@@ -1,8 +1,9 @@
 import { Component } from '@angular/core';
-import { IonicPage, NavController, NavParams } from 'ionic-angular';
+import { NavController, NavParams } from 'ionic-angular';
 import { ContentService } from '../../services/content.service';
 import { Link } from '../../models/link';
 import { LoadingController } from 'ionic-angular';
+import { LinkFactory } from '../../factories/linkFactory';
 
 /**
  * Generated class for the LinksPage page.
@@ -17,8 +18,8 @@ import { LoadingController } from 'ionic-angular';
 })
 export class LinksPage {
 
-  links:String[];
-  partners:String[];
+  links:Array<Link>;
+  partners:Array<Link>;
   constructor(public navCtrl: NavController, public navParams: NavParams, public contentService:ContentService, public loadingCtrl: LoadingController) {
   }
 
@@ -36,8 +37,10 @@ export class LinksPage {
     });
     loading.present();
     this.contentService.getLinks( data => {
-      this.links = data.useful_links;
-      this.partners = data.partners;
+      const factory     = new LinkFactory();
+      this.links        = factory.create(data.useful_links);
+      console.log(this.links);
+      this.partners     = factory.create(data.partners);
       loading.dismiss();
     });
   }

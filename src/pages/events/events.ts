@@ -8,6 +8,7 @@ import { Event } from '../../models/Event';
 import { Category } from '../../models/Category';
 import { CreateEvent } from './create-event';
 import { EventService } from '../../services/event.service';
+import { EventFactory } from '../../factories/eventFactory';
 @Component({
     selector: "events",
     templateUrl: 'event.html'
@@ -28,7 +29,8 @@ import { EventService } from '../../services/event.service';
       });
       loading.present();
       this.eventService.getEvents( data => {
-        this.categories = data.categories;
+        const factory     = new EventFactory();
+        this.categories   = factory.create(data.categories);
         loading.dismiss();
       });
     }
