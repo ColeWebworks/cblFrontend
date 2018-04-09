@@ -7,19 +7,36 @@ import { environment } from '../app/environments/environment';
 import { ApiService } from './api.service';
 import { Events } from 'ionic-angular';
 import { User } from '../models/User';
+import { Role } from '../models/Role';
 import { Storage } from '@ionic/storage';
 
 @Injectable()
 export class AuthService extends ApiService {
 
     private user:User;
+    public roles:Role[];
 
     constructor (http: HttpClient, protected storage: Storage, private events: Events){
       super(http, storage);
       console.log(this.events);
       this.events.subscribe('user:token', (user, time) => {
-        this.getUid();
+        this.storage.get('user_role').then(role => {
+          this.user.role = new Role(role.id, role.name);
+          this.getUid();
+        });
       });
+      this.events.subscribe('user:authenticated', (user, time) => {
+        this.getRoles();
+      });
+      this.events.subscribe('user:roles', (roles, time) => {
+        console.log(roles);
+        this.storage.set('roles', roles).then(err => {});
+        this.roles = roles;
+      });
+    }
+
+    ionViewWillEnter() {
+
     }
 
     public login(email:string, password:string): Observable<any> {
@@ -82,6 +99,22 @@ export class AuthService extends ApiService {
         console.error('Error getting item', error);
         console.log('user:unauthenticated');
         this.events.publish('user:unauthenticated', this.user, Date.now());
+      });
+    }
+
+    private getRoles() {
+      console.log('getRoles');
+      const baseUrl = environment.baseUrl+'roles';
+      let roles = [];
+      return this.setup(baseUrl).then(url => {
+        return this.http.get(url).subscribe(data => {
+          data['roles'].forEach(element => {
+            let r = new Role(element.id, element.name);
+            roles.push(r);
+          });
+          console.log('user:roles');
+          this.events.publish('user:roles', roles, Date.now());
+        });
       });
     }
 }

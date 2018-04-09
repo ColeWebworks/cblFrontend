@@ -25,8 +25,8 @@ export class LoginPage {
       if(typeof userData.token != 'undefined') {
 
         this.storage.set('token', userData.token);
-
         this.storage.set('user_id', userData.uid);
+        this.storage.set('user_role', userData.role);
 
         this.authService.getUser();
 

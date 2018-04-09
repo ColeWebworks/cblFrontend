@@ -1,7 +1,9 @@
 import { Component } from '@angular/core';
-import { NavController, LoadingController } from 'ionic-angular';
+import { NavController, LoadingController, Loading } from 'ionic-angular';
 import { ReadyState } from '@angular/http';
 import { LoginPage } from '../login/login';
+import { EventsPage } from '../Events/events';
+import { AdminPage } from '../admin/admin';
 import { AuthService } from '../../services/login.service';
 import { Events } from 'ionic-angular';
 import { Storage } from '@ionic/storage';
@@ -13,25 +15,34 @@ import { Storage } from '@ionic/storage';
 export class HomePage {
 
   userToken;
+  ld:Loading;
 
   constructor(public navCtrl: NavController, public storage: Storage, public loadingCtrl: LoadingController, public authService: AuthService, public events:Events) {
-
-  }
-
-  ionViewWillEnter() {
     let loading = this.loadingCtrl.create({
       content: 'Please wait...'
     });
-    loading.present();
+    console.log('View loaded');
+    this.ld = loading;
+
     this.events.subscribe('user:authenticated', (user, time) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
-      console.log('Welcome', user, 'at', time);
-      loading.dismiss();
+      console.log('Welcome', user.role.name, 'at', time);
+      if(user.role.id === 1) {
+        this.navCtrl.push(AdminPage);
+      }
+      else {
+        this.navCtrl.push(EventsPage);
+      }
+      this.ld.dismiss();
     });
     this.events.subscribe('user:unauthenticated', (user, time) => {
       // user and time are the same arguments passed in `events.publish(user, time)`
       this.navCtrl.push(LoginPage);
-      loading.dismiss();
+      this.ld.dismiss();
     });
+  }
+
+  ionViewWillEnter() {
+    console.log('View will enter');
   }
 }
