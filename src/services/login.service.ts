@@ -42,7 +42,7 @@ export class AuthService extends ApiService {
     public login(email:string, password:string): Observable<any> {
       const baseUrl = environment.baseUrl+'login';
       const postData = {email, password};
-
+console.log(baseUrl);
       return this.http.post(baseUrl, postData, this.setOrigin())
       .pipe(
         catchError(this.handleError)
