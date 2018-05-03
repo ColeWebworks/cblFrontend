@@ -8,6 +8,7 @@ import { Event } from '../../models/Event';
 import { Category } from '../../models/Category';
 import { CreateEvent } from './create-event';
 import { EventService } from '../../services/event.service';
+import { AuthService } from '../../services/login.service';
 import { EventFactory } from '../../factories/eventFactory';
 @Component({
     selector: "events",
@@ -21,7 +22,7 @@ import { EventFactory } from '../../factories/eventFactory';
     public showRightButton: boolean;
     private fullCategories:Category[];
     private categories:Category[];
-    constructor(public navCtrl: NavController, public storage: Storage, public loadingCtrl: LoadingController, public modalCtrl: ModalController, private eventService: EventService) {
+    constructor(public authService: AuthService, public navCtrl: NavController, public storage: Storage, public loadingCtrl: LoadingController, public modalCtrl: ModalController, private eventService: EventService) {
 
     }
 

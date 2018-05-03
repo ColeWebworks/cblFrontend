@@ -43,7 +43,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     BrowserModule,
     HttpClientModule,
     IonicModule.forRoot(MyApp),
-    IonicStorageModule.forRoot()
+    IonicStorageModule.forRoot(),
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -63,7 +63,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AuthService,
     ContentService,
     EventService,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
 export class AppModule {}

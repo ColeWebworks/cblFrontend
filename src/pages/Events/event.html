@@ -5,9 +5,15 @@
     </button>
     <ion-title>Events</ion-title>
 
-    <ion-buttons end>
+    <ion-buttons end *ngIf="authService.user.role.id != 4">
       <button ion-button icon-only (click)="presentModal()">
-        <ion-icon name="add"></ion-icon>
+        <ion-icon name="add"></ion-icon> Add Event
+      </button>
+    </ion-buttons>
+
+    <ion-buttons end *ngIf="authService.user.role.id == 4">
+      <button ion-button icon-only (click)="presentModal()">
+        <ion-icon name="add"></ion-icon> Request Event
       </button>
     </ion-buttons>
 

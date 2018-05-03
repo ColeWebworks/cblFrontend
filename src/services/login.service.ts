@@ -13,8 +13,9 @@ import { Storage } from '@ionic/storage';
 @Injectable()
 export class AuthService extends ApiService {
 
-    private user:User;
+    public user:User;
     public roles:Role[];
+    public isLoggedIn:boolean = false;
 
     constructor (http: HttpClient, protected storage: Storage, private events: Events){
       super(http, storage);
@@ -27,11 +28,16 @@ export class AuthService extends ApiService {
       });
       this.events.subscribe('user:authenticated', (user, time) => {
         this.getRoles();
+        this.isLoggedIn = true;
       });
       this.events.subscribe('user:roles', (roles, time) => {
         console.log(roles);
         this.storage.set('roles', roles).then(err => {});
         this.roles = roles;
+      });
+
+      this.events.subscribe('user:unauthenticated', (user, time) => {
+        this.isLoggedIn = false;
       });
     }
 
@@ -47,6 +53,13 @@ console.log(baseUrl);
       .pipe(
         catchError(this.handleError)
       );
+    }
+
+    public logout() {
+      this.storage.remove('token');
+      this.storage.remove('user_id');
+      this.storage.remove('user_role');
+      this.events.publish('user:unauthenticated', this.user, Date.now());
     }
 
     public changePassword(userId:Number, password:string, confirm:string, callback){

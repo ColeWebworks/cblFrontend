@@ -11,12 +11,12 @@
 
     <div padding>
       <ion-list>
-    
+
         <ion-item>
           <ion-label floating>Event Name</ion-label>
           <ion-input id="name" #name type="text"></ion-input>
         </ion-item>
-    
+
         <ion-item>
           <ion-label floating>Event Location</ion-label>
           <ion-input id="location" #location type="text"></ion-input>
@@ -26,10 +26,10 @@
             <ion-label floating>Start Time</ion-label>
              <ion-datetime displayFormat="DD/MM/YY HH:mm" pickerFormat="D : MMM : YYYY HH : mm" min="2018" max="2020" hourValues="09,10,11,12,13,14,15,16,17" minuteValues="00,15,30,45"  [(ngModel)]="Event" id="start" #start></ion-datetime>
           </ion-item>
-          
+
           <ion-item>
             <ion-label floating>End Time</ion-label>
-            <ion-datetime displayFormat="DD/MM/YY HH:mm" pickerFormat="D : MMM : YYYY HH : mm" min="2018" max="2020" hourValues="09,10,11,12,13,14,15,16,17" minuteValues="00,15,30,45" [(ngModel)]="Event" id="start" #start></ion-datetime>
+            <ion-datetime displayFormat="DD/MM/YY HH:mm" pickerFormat="D : MMM : YYYY HH : mm" min="2018" max="2020" hourValues="09,10,11,12,13,14,15,16,17" minuteValues="00,15,30,45" [(ngModel)]="EventEnd" id="end" #end></ion-datetime>
           </ion-item>
 
           <ion-item>
@@ -46,9 +46,7 @@
           </ion-item>
 
           <button ion-button block color="dark" round type="submit" (click)="createEvent( name.value , location.value , start.value , end.value , details.value, category.value )">Create Event</button>
-    
+
       </ion-list>
     </div>
     </ion-content>
-    
-    
