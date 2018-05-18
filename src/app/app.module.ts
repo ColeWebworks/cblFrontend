@@ -1,5 +1,5 @@
+import { ErrorHandler, NgModule, LOCALE_ID } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
-import { ErrorHandler, NgModule } from '@angular/core';
 import { IonicApp, IonicErrorHandler, IonicModule, Events } from 'ionic-angular';
 import { IonicStorageModule } from '@ionic/storage';
 
@@ -63,6 +63,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
     AuthService,
     ContentService,
     EventService,
+    { provide: LOCALE_ID, useValue: 'fr' },
     {provide: ErrorHandler, useClass: IonicErrorHandler},
   ]
 })
