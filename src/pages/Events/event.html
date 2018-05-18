@@ -25,12 +25,12 @@
       </ion-col>
 
       <ion-col no-padding col-10>
-        <ion-slides (ionSlideDidChange)="slideChanged()" slidesPerView="3">
-            <ion-slide (click)="filterData(category.id)" *ngFor="let category of fullCategories">
-                <ion-badge item-center [class.selected]="selectedCategory?.id === category.id">{{ category.name }}</ion-badge>
-            </ion-slide>
+        <ion-slides (ionSlideDidChange)="slideChanged()" slidesPerView="1">
             <ion-slide (click)="filterData(0)">
               <ion-badge item-center [class.selected]="selectedCategory?.id === 0">All</ion-badge>
+            </ion-slide>
+            <ion-slide (click)="filterData(category.id)" *ngFor="let category of fullCategories">
+                <ion-badge item-center [class.selected]="selectedCategory?.id === category.id">{{ category.name }}</ion-badge>
             </ion-slide>
         </ion-slides>
       </ion-col>
@@ -50,5 +50,6 @@
         <ion-item *ngFor="let event of cat.events">
             <h2>{{event.name}}</h2>
         </ion-item>
+        <p *ngIf="slideIndex > 0 && cat.events.length == 0">Sorry, there are no events in this category.</p>
     </ion-list>
 </ion-content>

@@ -22,6 +22,7 @@ import { EventFactory } from '../../factories/eventFactory';
     public showRightButton: boolean;
     private fullCategories:Category[];
     private categories:Category[];
+    private slideIndex: number = 0;
     constructor(public authService: AuthService, public navCtrl: NavController, public storage: Storage, public loadingCtrl: LoadingController, public modalCtrl: ModalController, private eventService: EventService) {
 
     }
@@ -87,7 +88,7 @@ import { EventFactory } from '../../factories/eventFactory';
 
       // Check which arrows should be shown
       this.showLeftButton = false;
-      this.showRightButton = this.categories.length > 3;
+      this.showRightButton = this.categories.length > 1;
     }
 
     public filterData(categoryId: number): void {
@@ -99,7 +100,15 @@ import { EventFactory } from '../../factories/eventFactory';
     public slideChanged(): void {
         let currentIndex = this.slides.getActiveIndex();
         this.showLeftButton = currentIndex !== 0;
-        this.showRightButton = currentIndex !== Math.ceil(this.slides.length() / 3);
+        this.showRightButton = currentIndex !== Math.ceil(this.slides.length());
+
+        if(currentIndex > 0) {
+          this.filterData(this.fullCategories[currentIndex-1].id);
+        } else {
+          this.filterData(0);
+        }
+
+        this.slideIndex = currentIndex;
     }
 
     // Method that shows the next slide
