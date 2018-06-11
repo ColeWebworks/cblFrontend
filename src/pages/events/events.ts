@@ -10,6 +10,7 @@ import { CreateEvent } from './create-event';
 import { EventService } from '../../services/event.service';
 import { AuthService } from '../../services/login.service';
 import { EventFactory } from '../../factories/eventFactory';
+import { Events } from 'ionic-angular';
 @Component({
     selector: "events",
     templateUrl: 'event.html'
@@ -23,8 +24,13 @@ import { EventFactory } from '../../factories/eventFactory';
     private fullCategories:Category[];
     private categories:Category[];
     private slideIndex: number = 0;
-    constructor(public authService: AuthService, public navCtrl: NavController, public storage: Storage, public loadingCtrl: LoadingController, public modalCtrl: ModalController, private eventService: EventService) {
-
+    constructor(public authService: AuthService, public navCtrl: NavController, public storage: Storage, public loadingCtrl: LoadingController, public modalCtrl: ModalController, private eventService: EventService, protected events: Events) {
+      this.events.subscribe('event:created', (event, time) => {
+        // user and time are the same arguments passed in `events.publish(user, time)`
+        console.log('Event created', event, 'at', time);
+        this.categories = [];
+        this.showEvents(0);
+      });
     }
 
     ionViewWillEnter() {

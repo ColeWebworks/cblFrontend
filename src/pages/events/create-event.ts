@@ -2,6 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 import { NgSwitch, NgSwitchDefault,NgSwitchCase} from '@angular/common';
 import { NgModule, ErrorHandler } from '@angular/core';
+import { catchError, retry } from 'rxjs/operators';
 import { IonicApp, IonicModule, IonicErrorHandler, ViewController, LoadingController } from 'ionic-angular';
 import { EventService } from '../../services/event.service';
 import { Category } from '../../models/Category';
@@ -42,8 +43,15 @@ import { CategoryFactory } from '../../factories/categoryFactory';
         name, location, start, end, details, category
       };
       this.eventService.postEvent(postData,data =>{
-        console.log(data);
         loading.dismiss();
-      })
+        if(data.status) {
+          this.dismiss();
+        }
+        else {
+          alert('There are errors!');
+        }
+      },
+      error => {}
+     )
     }
   }
