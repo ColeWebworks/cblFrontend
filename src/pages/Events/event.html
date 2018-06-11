@@ -49,6 +49,7 @@
         </ion-list-header>
         <ion-item *ngFor="let event of cat.events">
             <h2>{{event.name}}</h2>
+            <p>{{ event.start.format('MMM Do YY') }}</p>
         </ion-item>
         <p *ngIf="slideIndex > 0 && cat.events.length == 0">Sorry, there are no events in this category.</p>
     </ion-list>

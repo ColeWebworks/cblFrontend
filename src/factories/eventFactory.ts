@@ -1,6 +1,7 @@
 import { ModelFactory } from './modelFactory';
 import { Event } from '../models/Event';
 import { Category } from '../models/Category';
+const moment = require('moment');
 
 export class EventFactory extends ModelFactory {
   create(data: Array<any>):Array<Category> {
@@ -16,7 +17,8 @@ export class EventFactory extends ModelFactory {
           let e = new Event();
           e.name    = el.name;
           e.details = el.details;
-          e.start   = el.start;
+          e.start   = moment(el.start);
+          e.end     = moment(el.end);
           c.events.push(e);
         });
       }
